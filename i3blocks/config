@@ -1,0 +1,16 @@
+
+[battery]
+command=cat /sys/class/power_supply/BAT0/capacity | xargs printf "🔋 %s%%"
+interval=30
+
+[spacer]
+command=echo "                                                                                                                      "
+interval=once
+
+[calendar]
+command=date '+%A, %B %d'
+interval=3600
+
+[clock]
+command=date '+%H:%M'
+interval=60

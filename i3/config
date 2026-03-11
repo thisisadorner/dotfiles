@@ -1,0 +1,147 @@
+# ================= FULL I3 CONFIG =================
+# Set mod key
+set $mod Mod4
+set $term alacritty
+set $launcher rofi -show drun
+# ================= WINDOW BORDERS / GAPS =================
+new_window none
+for_window [class=".*"] border none
+# Gaps
+gaps inner 20
+gaps outer 10
+smart_gaps on
+smart_borders on
+# ================= WORKSPACES =================
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws0 "10"
+set $wsa "a"
+# Switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws0
+bindsym $mod+a workspace $wsa
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws0
+bindsym $mod+Shift+a move container to workspace $wsqa
+
+
+#workspace
+workspace $ws1 output HDMI-1-0
+workspace $ws2 output HDMI-1-0
+workspace $ws3 output HDMI-1-0
+workspace $ws4 output HDMI-1-0
+workspace $ws5 output HDMI-1-0
+workspace $ws6 output HDMI-1-0
+workspace $ws7 output HDMI-1-0
+workspace $ws8 output HDMI-1-0
+workspace $ws9 output HDMI-1-0
+workspace $ws0 output HDMI-1-0
+workspace $wsa output eDP-1
+
+
+
+# ================= TERMINAL & TMUX =================
+bindsym $mod+Return exec --no-startup-id $term -e tmux
+# ================= APP LAUNCHER =================
+bindsym $mod+d exec --no-startup-id $launcher
+# ================= VOLUME & BRIGHTNESS =================
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+# ================= WINDOW MANAGEMENT =================
+bindsym $mod+b split h
+bindsym $mod+v split v
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+r reload
+bindsym $mod+Shift+c restart
+# Focus / move windows
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+# ================= GAP TOGGLE =================
+bindsym $mod+g gaps inner current plus 5
+bindsym $mod+Shift+g gaps inner current minus 5
+
+# ================= FOCUS MODE (TOGGLE BAR) =================
+bindsym $mod+m bar mode toggle
+# ================= EXIT / LOGOUT =================
+bindsym $mod+Shift+e exec --no-startup-id i3-nagbar -t warning -m "Exit i3?" -b "Yes, exit i3" "i3-msg exit"
+# ================= LOCK SCREEN =================
+bindsym $mod+Up exec xscreensaver-command -lock
+bindsym $mod+Down exec xscreensaver-command -lock
+bindsym $mod+Left exec xscreensaver-command -lock
+bindsym $mod+Right exec xscreensaver-command -lock
+# ================= STARTUP APPS =================
+exec --no-startup-id nm-applet
+exec --no-startup-id volumeicon
+exec_always --no-startup-id nitrogen --restore
+exec --no-startup-id xscreensaver -no-splash
+
+# ================= DUAL MONITOR HI-DPI =================
+#exec --no-startup-id xrandr --output HDMI-1-0 --primary --auto --output eDP-1 --off
+#exec --no-startup-id xrandr --output HDMI-1-0 --primary --mode 2560x1440 --rate 120 --output eDP-1 --off
+exec --no-startup-id xrandr --output HDMI-1-0 --primary --mode 3840x2160 --rate 60 --output eDP-1 --auto --left-of HDMI-1-0
+
+
+# ================= Low contrast OLED theme =============
+client.focused          #000000 #1a1a1a #a0a0a0 #303030 #303030
+client.focused_inactive #000000 #000000 #707070 #1a1a1a #1a1a1a
+client.unfocused        #000000 #000000 #505050 #0a0a0a #0a0a0a
+client.urgent           #000000 #1a1a1a #a0a0a0 #1a1a1a #1a1a1a:w
+
+# ================= PDF VIEWER =======
+bindsym $mod+p exec ~/.local/bin/pdf-open
+
+
+
+# ================= STATUS BAR (Solarized Light) =================
+bar {
+    font pango:monospace 16
+    position bottom
+    status_command i3blocks -c ~/.config/i3blocks/config
+    colors {
+        background #fdf6e3
+        statusline #586e75
+        separator  #93a1a1
+        focused_workspace  #268bd2 #268bd2 #fdf6e3
+        active_workspace   #93a1a1 #93a1a1 #fdf6e3
+        inactive_workspace #eee8d5 #eee8d5 #657b83
+        urgent_workspace   #dc322f #dc322f #fdf6e3
+    }
+}
+
+# clean-text shortcut
+bindsym Ctrl+Mod1+c exec --no-startup-id ~/.local/bin/clean-text

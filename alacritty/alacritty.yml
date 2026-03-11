@@ -1,0 +1,44 @@
+window:
+  opacity: 0.95
+  padding:
+    x: 10
+    y: 10
+  dynamic_title: true
+  decorations: none
+
+font:
+  size: 10.0
+  normal:
+    family: monospace
+    style: Regular
+
+colors:
+  primary:
+    background: '#fdf6e3'   # Base3 (light background)
+    foreground: '#657b83'   # Base00 (main text)
+  cursor:
+    text:   '#fdf6e3'
+    cursor: '#657b83'
+  normal:
+    black:   '#073642'      # Base02
+    red:     '#dc322f'      # Red
+    green:   '#859900'      # Green
+    yellow:  '#b58900'      # Yellow
+    blue:    '#268bd2'      # Blue
+    magenta: '#d33682'      # Magenta
+    cyan:    '#2aa198'      # Cyan
+    white:   '#eee8d5'      # Base2
+  bright:
+    black:   '#002b36'      # Base03
+    red:     '#cb4b16'      # Orange
+    green:   '#586e75'      # Base01
+    yellow:  '#657b83'      # Base00
+    blue:    '#839496'      # Base0
+    magenta: '#6c71c4'      # Violet
+    cyan:    '#93a1a1'      # Base1
+    white:   '#fdf6e3'      # Base3
+cursor:
+  style:
+    shape: Block
+    blinking: On
+

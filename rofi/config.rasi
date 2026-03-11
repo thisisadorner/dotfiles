@@ -1,0 +1,9 @@
+configuration {
+    font: "Monospace 12";
+    width: 50%;
+    lines: 10;
+    fixed-num-lines: true;
+    sidebar-mode: true;
+    show-icons: true;	   
+ }
+@theme "~/.config/rofi/themes/Arc-Dark.rasi"
