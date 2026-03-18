@@ -1,4 +1,4 @@
-# earlgrey dotfiles
+# Earl Grey - Solarized Light i3 themed config dotfiles
 
 A portable i3 desktop configuration for Linux. Drop it on any machine, run one script, and you're done.
 
